@@ -22,9 +22,9 @@
 
 ## 設計書
 
-<>
 
-## チャレンジ要素一覧
+
+## 機能一覧
 
 https://docs.google.com/spreadsheets/d/1sW-Y2LFYcr2rAEngTvuobKXuah0LKJJLDuhCip6sbh4/edit#gid=0
 
