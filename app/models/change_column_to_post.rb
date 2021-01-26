@@ -1,0 +1,2 @@
+class ChangeColumnToPost < ApplicationRecord
+end

@@ -1,0 +1,43 @@
+<div class="container">
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-10">
+
+<span class="bg-light" style="font-size: 21px;">投稿内容</span>
+
+<table>
+<th>
+<%= attachment_image_tag @post, :image, format: 'jpeg', size: "200x120" %>
+</th>
+  <tr>
+  <th>画像名</th>
+  <th><%= @post.name %></th>
+  </tr>
+
+  <tr>
+  <th>画像説明</th>
+  <th><%= @post.description %></th>
+  </tr>
+
+  <tr>
+  <th>カテゴリー名</th>
+  <th><%= @post.category_id %></th>
+  </tr>
+
+  <tr>
+  <th>撮影地</th>
+  <th><%= @post.location_id %></th>
+  </tr>
+
+  <th>撮影日</th>
+  <th><%= @post.shooting_date %></th>
+  </tr>
+
+  <tr>
+  <th><%= link_to "編集する", edit_post_path(@post),class:'btn btn-success'  %></th>
+  </tr>
+
+</table>
+</div>
+</div>
+</div>

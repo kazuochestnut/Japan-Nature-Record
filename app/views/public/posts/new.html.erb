@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      </br>
+      <span class="bg-light" style="font-size: 21px;">新規投稿</span>
+      <%= form_with model:@post,url: posts_path, method: :post, local:true do |f| %>
+        <h6>画像</h6>
+        <div><%= f.attachment_field :image %></div>
+        <h6>画像名</h6>
+        <%= f.text_field :name %>
+        <h5>画像説明</h5>
+        <%= f.text_area :description%>
+        <h5>カテゴリー</h5>
+        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
+        <h5>撮影地</h5>
+        <%= f.collection_select :location_id, Location.all, :id, :name, include_blank: "選択して下さい" %>
+        <h5>撮影日</h5>
+        <%= f.text_field :shooting_date%>
+        </br>
+        <%= f.submit '新規投稿', class:'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
