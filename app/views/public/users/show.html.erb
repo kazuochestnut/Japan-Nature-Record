@@ -1,37 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+        <h3>ユーザー</h3>
+      <table class="table">
+        <tr>
+        <%= attachment_image_tag @user, :profile_image_id, :fill, 50, 50, fallback: "no_image.jpg"%>
+        </tr>
+        <tr>
+        <td>name</td>
+        <td><%= @user.family_name %><%= @user.first_name %></td>
+        </tr>
+        <tr>
+        <td>follows</td>
+        <td>
+          <%= link_to following_user_path(@user) do %>
+            <%= @user.followings.count %>
+          <% end %>
+        </td>
+        </tr>
+        <tr>
+        <td>followers</td>
+        <td>
+          <%= link_to followers_user_path(@user) do %>
+            <%= @user.followers.count %>
+          <% end %>
+        </td>
+        </tr>
 
-  <h3>ユーザー</h3>
-<table class="table">
-  <tr>
-  <%= attachment_image_tag @user, :profile_image_id, :fill, 50, 50, fallback: "no_image.jpg"%>
-  </tr>
-  <tr>
-  <td>name</td>
-  <td><%#= @user.name %></td>
-  </tr>
-  <tr>
-  <td>follows</td>
-  <td> 
-    <%= link_to following_user_path(@user) do %>
-      <%= @user.followings.count %>
-    <% end %>
-  </td>
-  </tr>
-  <tr>
-  <td>followers</td>
-  <td>
-    <%= link_to followers_user_path(@user) do %>
-      <%= @user.followers.count %>
-    <% end %>
-  </td>
-  </tr>
+        <td><%= render 'relationships/follow_button',user: @user %></td>
 
-  <td><%= render 'relationships/follow_button',user: @user %></td>
- 
 
-</table>
+      </table>
 
-<!--% if user_signed_in? && user == current_user %>-->
-<%= link_to  my_page_edit_path(@user) do %>
-<button type="button" class="btn btn-light btn-lg btn-block">
-<i class="fas fa-user-cog"></i></button>
-<% end %>
+      <!--% if user_signed_in? && user == current_user %>-->
+      <%= link_to  my_page_edit_path(@user) do %>
+      <button type="button" class="btn btn-light btn-lg btn-block">
+      <i class="fas fa-user-cog"></i></button>
+      <% end %>
+    </div>
+
+    <div class="col-md-9">
+
+      <% @posts.each do |post|%>
+          </br>
+          <%= attachment_image_tag post, :image, format: 'jpeg', width: "300px" %>
+          </br>
+          <%= link_to post.name , post_path(post.id) , class:'btn btn-link' %>
+          </tr>
+      <% end %>
+
+    </div>
+  </div>
+</div>

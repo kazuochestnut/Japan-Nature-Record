@@ -1,2 +1,29 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            </br>
+            <span class="bg-light" style="font-size: 21px;">商品編集</span>
+            <%= form_with model:@post, url:post_path, method: :patch, local:true do |f| %>
+              <h5>写真</h5>
+              <%= f.attachment_field :image %>
+              <h5>画像名</h5>
+              <%= f.text_field :name %>
+              <h5>現地情報</h5>
+              <%= f.text_area :description%>
+              <h5>カテゴリー</h5>
+              <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
+              <h5>撮影地</h5>
+              <%= f.collection_select :location_id, Location.all, :id, :name, include_blank: "選択して下さい" %>
+              <h5>撮影日</h5>
+              <%= f.text_field :shooting_date%>
+              <h5>おすすめ訪問時期</h5>
+              <%= f.text_field :visit%>
+              </br>
+              <%= f.submit '変更を保存', class:'btn btn-success' %>
+            <% end %>
+        </div>
+    </div>
+</div>

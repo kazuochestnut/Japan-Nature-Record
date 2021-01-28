@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = current_user
+     @user = current_user
+     @posts = @user.posts
     # @user = User.find(params[:id])
   end
 
@@ -11,12 +12,22 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
+    if @user.update(user_params)
+      redirect_to users_my_page_path
+    else
+      render :edit
+    end
   end
 
   def check
   end
 
   def withdraw
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
 
 

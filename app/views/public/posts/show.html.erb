@@ -7,7 +7,7 @@
 
 <table>
 <th>
-<%= attachment_image_tag @post, :image, format: 'jpeg', size: "200x120" %>
+<%= attachment_image_tag @post, :image, format: 'jpeg', width: "500px" %>
 </th>
   <tr>
   <th>画像名</th>
@@ -15,7 +15,7 @@
   </tr>
 
   <tr>
-  <th>画像説明</th>
+  <th>現地情報</th>
   <th><%= @post.description %></th>
   </tr>
 
@@ -32,9 +32,13 @@
   <th>撮影日</th>
   <th><%= @post.shooting_date %></th>
   </tr>
+  
+  <th>おすすめ訪問時期</th>
+  <th><%= @post.visit %></th>
+  </tr>
 
   <tr>
-  <th><%= link_to "編集する", edit_post_path(@post),class:'btn btn-success'  %></th>
+  <th><%= link_to "編集モード", edit_post_path(@post),class:'btn btn-success'  %></th>
   </tr>
 
 </table>

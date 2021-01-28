@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :admins
-  
-  
+
+
   devise_for :users, controllers: {
     sessions: 'public/users/sessions',
     passwords: 'public/users/passwords',
@@ -34,11 +34,11 @@ Rails.application.routes.draw do
     get 'posts/location'
     resources :relationships, only: [:create, :destroy]
   end
-   
+
   resources :users do
     member do
      get :following, :followers
     end
   end
-  
+
 end
