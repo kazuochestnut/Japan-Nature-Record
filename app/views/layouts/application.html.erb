@@ -16,42 +16,46 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <%#= link_to "商品一覧", admin_products_path, class: "btn btn-outline-secondary" %>
-                
+
                 <%= link_to "ユーザー管理", admin_users_path, class: "btn btn-outline-secondary" %>
-            
+
                 <%= link_to "カテゴリー管理", admin_categories_path, class: "btn btn-outline-secondary" %>
-    
+
                 <%= link_to "撮影地管理", admin_locations_path, class: "btn btn-outline-secondary" %>
-        
+
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete , class: "btn btn-outline-secondary" %>
             </ul>
-        
+
             <% elsif user_signed_in? %>
             <div class="customer-name p-3">
               <p>ようこそ、 <%= current_user.family_name %> さん！</p>
             </div>
-            
+
             <ul class="navbar-nav ml-auto">
-             
+
                 <%= link_to "マイページ", users_my_page_path(current_user), class: "fas fa-home text-white" %>
-              
+
                 <%= link_to "投稿一覧", posts_path, class: "fas fa-book-open text-white" %>
-              
+
                 <%= link_to "撮影地一覧", posts_location_path, class: "fas fa-users text-white" %>
-             
+
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt text-white" %>
-              
+                
+                <%= link_to posts_search_path do %>
+                <i class="fas fa-search-plus fa-pull-right fa-3x"></i>
+                <% end %>
+
             </ul>
 
             <% else %>
               <ul class="navbar-nav ml-auto">
-                
+
                   <%= link_to "About", about_path, class: "btn btn-outline-secondary" %>
-              
+
                   <%#= link_to "商品一覧", products_path, class: "btn btn-outline-secondary" %>
-          
+
                   <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
-               
+
                   <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
               </ul>
             <% end %>

@@ -26,6 +26,12 @@ class Public::PostsController < ApplicationController
   end
 
   def location
+    @post = Post.find(params[:id])
+  end
+
+  def search
+     @q = Post.ransack(params[:q])
+     @posts = @q.result(distinct: true)
   end
 
   def edit
@@ -35,7 +41,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-       redirect_to post_path(@post)
+       redirect_to post_path(@post.id)
     else
        render :edit
     end
@@ -43,7 +49,7 @@ class Public::PostsController < ApplicationController
 
    private
   def post_params
-    params.require(:post).permit(:name, :image, :description, :shooting_date, :location_id, :category_id)
+    params.require(:post).permit(:name, :image, :description, :shooting_date, :location_id, :category_id, :visit)
   end
 
 end

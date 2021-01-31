@@ -46,7 +46,10 @@
           <%= attachment_image_tag post, :image, format: 'jpeg', width: "300px" %>
           </br>
           <%= link_to post.name , post_path(post.id) , class:'btn btn-link' %>
-          </tr>
+          </br>
+          <div id="likes_buttons_<%= post.id %>">
+           <%= render partial: 'public/likes/like', locals: { post: post} %>
+          </div>
       <% end %>
 
     </div>

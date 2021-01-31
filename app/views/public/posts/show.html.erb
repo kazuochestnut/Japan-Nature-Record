@@ -1,47 +1,51 @@
 <div class="container">
-<div class="row">
-<div class="col-md-2"></div>
-<div class="col-md-10">
-
-<span class="bg-light" style="font-size: 21px;">投稿内容</span>
-
-<table>
-<th>
-<%= attachment_image_tag @post, :image, format: 'jpeg', width: "500px" %>
-</th>
-  <tr>
-  <th>画像名</th>
-  <th><%= @post.name %></th>
-  </tr>
-
-  <tr>
-  <th>現地情報</th>
-  <th><%= @post.description %></th>
-  </tr>
-
-  <tr>
-  <th>カテゴリー名</th>
-  <th><%= @post.category_id %></th>
-  </tr>
-
-  <tr>
-  <th>撮影地</th>
-  <th><%= @post.location_id %></th>
-  </tr>
-
-  <th>撮影日</th>
-  <th><%= @post.shooting_date %></th>
-  </tr>
-  
-  <th>おすすめ訪問時期</th>
-  <th><%= @post.visit %></th>
-  </tr>
-
-  <tr>
-  <th><%= link_to "編集モード", edit_post_path(@post),class:'btn btn-success'  %></th>
-  </tr>
-
-</table>
-</div>
-</div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+    
+    <span class="bg-light" style="font-size: 21px;">投稿内容</span>
+    
+    <table>
+    <th>
+    <%= attachment_image_tag @post, :image, format: 'jpeg', width: "500px" %>
+    </th>
+      <tr>
+      <th>画像名</th>
+      <th><%= @post.name %></th>
+      </tr>
+    
+      <tr>
+      <th>現地情報</th>
+      <th><%= @post.description %></th>
+      </tr>
+    
+      <tr>
+      <th>カテゴリー名</th>
+      <th><%= @post.category.name %></th>
+      </tr>
+    
+      <tr>
+      <th>撮影地</th>
+      <th><%= @post.location.name %></th>
+      </tr>
+    
+      <th>撮影日</th>
+      <th><%= @post.shooting_date %></th>
+      </tr>
+      
+      <th>おすすめ訪問時期</th>
+      <th><%= @post.visit %></th>
+      </tr>
+      <th><div id="likes_buttons_<%= @post.id %>">
+       <%= render partial: 'public/likes/like', locals: { post: @post} %>
+      </div></th>
+      <th><div class="comment-create">
+       <%= render partial: 'public/post_comments/post', locals: { post: @post, post_comment: @post_comment } %>
+      </div></th>
+      <tr>
+      <th><%= link_to "編集モード", edit_post_path(@post),class:'btn btn-success'  %></th>
+      </tr>
+     </table>
+    </div>
+  </div>
 </div>
