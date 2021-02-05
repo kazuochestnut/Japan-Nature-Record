@@ -1,4 +1,8 @@
 class Public::PostsController < ApplicationController
+
+ before_action :authenticate_user!
+ before_action :ensure_correct_user ,only: [:edit, :update]
+
   def index
     @posts = Post.all
     @post = Post.new
@@ -7,6 +11,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+    @user = @post.user
+    # byebug
   end
 
   def new
@@ -26,7 +33,7 @@ class Public::PostsController < ApplicationController
   end
 
   def location
-    @post = Post.find(params[:id])
+    @posts = Post.all
   end
 
   def search
@@ -47,9 +54,24 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    flash[:complete]="投稿を削除しました"
+    redirect_to posts_path
+  end
+
    private
+
+  def ensure_correct_user
+    @post = Post.find_by(id:params[:id])
+    if @post.user_id != current_user.id
+      redirect_to("/posts")
+    end
+  end
+
   def post_params
-    params.require(:post).permit(:name, :image, :description, :shooting_date, :location_id, :category_id, :visit)
+    params.require(:post).permit(:name, :image, :description, :shooting_date, :location_id, :category_id, :visit, :address)
   end
 
 end

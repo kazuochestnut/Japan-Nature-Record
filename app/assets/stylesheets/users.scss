@@ -1,3 +1,30 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-container {
+  background-image: image-url('image/IMGP6536.JPG');
+  height: 1000px;
+  background-size:cover;
+  text-align: center;
+}
+
+
+.fontwhite{
+  color: white;
+}
+
+.egawa{
+  background-image: image-url('image/egawa.JPG');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-family:'ヒラギノ明朝 Pro W6';
+}
+
+.egawa2{
+  background-image: image-url('image/egawa2.JPG');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-family:'ヒラギノ明朝 Pro W6';
+}

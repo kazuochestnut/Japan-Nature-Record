@@ -32,9 +32,10 @@ Rails.application.routes.draw do
     get 'users/my_page/edit' => 'users#edit', as: 'my_page_edit'
     get 'posts/location', to: 'posts#location'
     get 'posts/search', to: 'posts#search'
+
     resources :posts do
      resource :likes, only: [:create, :destroy]
-     resource :post_comments, only: [:create, :destroy]
+     resources :post_comments, only: [:create, :destroy]
     end
 
     resources :relationships, only: [:create, :destroy]

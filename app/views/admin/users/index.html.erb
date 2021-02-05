@@ -1,12 +1,15 @@
+<div class="egawa2">
 <div class="container">
   <div class = "row">
     <div class = "col-md-8 offset-md-2 w-100">
-      <h4 class="mt-4"><span class="bg-light">ユーザー管理</span></h4>
+      </br>
+      <h3>ユーザー管理</h3>
       <table class="w-100">
         <thead>
-          <tr class="border-top bg-light">
-            <td class="pt-2 pb-2"><strong>ユーザーID</strong></td>
-            <td><u><strong><%= link_to "氏名",admin_users_path,class:"text-dark" %></strong></u></td>
+          </br>
+          <tr>
+            <td><strong>ユーザーID</strong></td>
+            <td><u><strong><%= link_to "氏名",admin_users_path,class:"text-white" %></strong></u></td>
             <td><strong>メールアドレス</strong></td>
             <td><strong>ステータス</strong></td>
           </tr>
@@ -15,7 +18,7 @@
         <tbody>
           <tr class="border-top border-bottom">
             <td class="pt-2 pb-2"><%= user.id %></td>
-            <td><u><%= link_to "#{user.family_name}#{user.first_name}",admin_user_path(user),class:"text-dark" %></u></td>
+            <td><u><%= link_to "#{user.family_name}#{user.first_name}",admin_user_path(user),class:"text-white" %></u></td>
             <td><%= user.email %></td>
             <td>
               <% if (user.is_deleted?) %>
@@ -31,4 +34,24 @@
       <%= paginate @users %>
     </div>
   </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 </div>

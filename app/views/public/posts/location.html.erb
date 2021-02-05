@@ -1,3 +1,22 @@
-      <th>撮影地</th>
-      <th><%= @post.location_id %></th>
-      </tr>
+<div class="egawa">
+</br>
+<h4>撮影地一覧</h4>
+</br>
+<table class="table">
+  <tr>
+
+  <th><div class="location">都道府県</div></th>
+  <th><div class="location">撮影地</div></th>
+
+  </tr>
+ <% @posts.each do |post|%>
+    <tr>
+    <th><div class="location"><%= post.location.name %></div></th>
+    <th><div class="location"><%= link_to post.name , post_path(post.id) , class:'btn btn-link' %></div></th>
+    </tr>
+ <% end %>
+</table>
+</br>
+</br>
+</br>
+</div>

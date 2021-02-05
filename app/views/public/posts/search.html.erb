@@ -1,6 +1,19 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :name, "Keyword" %>
+<div class="egawa">
+</br>
+</br>
+<%= search_form_for @q , url: posts_search_path do |f| %>
+  <%= f.label :name , "撮影地検索" %>
   <%= f.search_field :name_cont %>
-
   <%= f.submit "検索" %>
 <% end %>
+</br>
+</br>
+<h3>検索結果</h3>
+ <% @posts.each do |post| %>
+    <%= link_to post_path(post.id) do %>
+     <%= attachment_image_tag post, :image, format: 'jpeg', width: "300px" %>
+    <% end %>
+ <% end %>
+</br>
+</br>
+</div>

@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
      @user = current_user
@@ -8,6 +9,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+
   end
 
   def update
@@ -29,12 +31,24 @@ class Public::UsersController < ApplicationController
     flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
+  
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+  end
 
 
   private
 
-	def user_params
-  	params.require(:user).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :postal_code, :phone_numbar, :email, :address)
-  end
+  	def user_params
+    	params.require(:user).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :postal_code, :phone_numbar, :email, :address)
+    end
 
 end

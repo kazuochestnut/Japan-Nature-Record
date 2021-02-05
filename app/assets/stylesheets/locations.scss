@@ -1,3 +1,14 @@
 // Place all the styles related to the locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.egawa2{
+  background-image: image-url('image/egawa2.JPG');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  font-family:'ヒラギノ明朝 Pro W6';
+}
+
+.location{
+  color: white;
+}

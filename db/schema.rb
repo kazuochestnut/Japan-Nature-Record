@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_171436) do
+ActiveRecord::Schema.define(version: 2021_02_03_181935) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -76,6 +76,9 @@ ActiveRecord::Schema.define(version: 2021_01_30_171436) do
     t.integer "location_id"
     t.integer "user_id"
     t.string "visit"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "relationships", force: :cascade do |t|

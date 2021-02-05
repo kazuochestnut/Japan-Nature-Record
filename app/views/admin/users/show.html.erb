@@ -1,2 +1,70 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="egawa2">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 w-100">
+      <h4 class=" mt-4"><%= @user.family_name %><%= @user.first_name %>さんのユーザー詳細</h4>
+      <table>
+        </br>
+        <tbody>
+          <tr>
+            <td class="pt-2">ユーザーID</td> 
+            <td class="pt-2 pl-4"><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">氏名</td> 
+            <td class="pt-3 pl-4"><%= @user.family_name %>　<%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">フリガナ</td>
+            <td class="pt-3 pl-4"><%= @user.family_name_kana %>　<%= @user.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">郵便番号</td> 
+            <td class="pt-3 pl-4"><%= @user.postal_code %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">住所</td> 
+            <td class="pt-3 pl-4"><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">電話番号</td> 
+            <td class="pt-3 pl-4"><%= @user.phone_number %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">メールアドレス</td> 
+            <td class="pt-3 pl-4"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="pt-3">会員ステータス</td> 
+            <td class="pt-3">
+              <% if (@user.is_deleted?) %>
+                <div class="text-secondary pl-4">退会</div>
+              <% else %>
+                <div class="text-success pl-4">有効</div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            
+            <td class="pt-3">　　</td>
+            <td class="pt-3 pl-4"><%= link_to "編集する",edit_admin_user_path(@user),class:"btn btn-success text-white" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</div>

@@ -1,54 +1,65 @@
+<div class="egawa2">
 <div class="container">
   <div class="row">
-    <div class="col-md-6 w-100">
-      <h4 class=" mt-4"><span class="bg-light"><%= @user.family_name %><%= @user.first_name %>さんのユーザー詳細</span></h4>
-      <table>
-        <tbody>
-          <tr>
-            <td class="pt-2">ユーザーID</td> 
-            <td class="pt-2 pl-4"><%= @user.id %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">氏名</td> 
-            <td class="pt-3 pl-4"><%= @user.family_name %>　<%= @user.first_name %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">フリガナ</td>
-            <td class="pt-3 pl-4"><%= @user.family_name_kana %>　<%= @user.first_name_kana %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">郵便番号</td> 
-            <td class="pt-3 pl-4"><%= @user.postal_code %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">住所</td> 
-            <td class="pt-3 pl-4"><%= @user.address %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">電話番号</td> 
-            <td class="pt-3 pl-4"><%= @user.phone_number %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">メールアドレス</td> 
-            <td class="pt-3 pl-4"><%= @user.email %></td>
-          </tr>
-          <tr>
-            <td class="pt-3">ユーザーステータス</td> 
-            <td class="pt-3">
-              <% if (@user.is_deleted?) %>
-                <div class="text-secondary pl-4">退会</div>
-              <% else %>
-                <div class="text-success pl-4">有効</div>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pt-3">　　</td>
-            <td class="pt-3 pl-4"><%= link_to "編集する",edit_admin_user_path(@user),class:"btn btn-success text-white" %></td>
-            <!--<td class="pt-3 "><%#= link_to "投稿履歴一覧を見る",admin_users_path,class:"btn btn-primary text-white" %></td>-->
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-md-8 w-100">
+      <h4 class="mt-4"><%= @user.family_name %><%= @user.first_name %>さんのユーザー情報編集</h4>
+      <%= form_with model: @user,url:"/admin/users/#{@user.id}",local:true do |f| %>
+        <div class="customer-info" >
+          <table class="mt-4">
+            <tr>
+              <td class="pt-2">ユーザーID</td>
+              <td class="pt-2 pl-4"><%= @user.id %></td>
+            </tr>
+            <tr>
+              <td class="pt-2">氏名</td>
+              <td class="pt-2 pl-4"><%= f.text_field :family_name,class:"rounded" %>　<%= f.text_field :first_name,class:"rounded" %></td>
+            </tr>
+            <tr>
+              <td class="pt-2">フリガナ</td>
+              <td class="pt-2 pl-4"><%= f.text_field :family_name_kana,class:"rounded" %>　<%= f.text_field :first_name_kana,class:"rounded" %></td>
+            </tr>
+            <tr>
+              <td class="pt-2">郵便番号</td>
+              <td class="pt-2 pl-4"><%= f.number_field :postal_code,class:"rounded" %></td>
+            </tr>
+            <tr>
+              <td class="pt-2">住所</td>
+              <td class="pt-2 pl-4"><%= f.text_field :address,class:"rounded" %></td>
+            </tr>
+             <tr>
+              <td class="pt-2">電話番号</td>
+              <td class="pt-2 pl-4"><%= f.number_field :phone_number,class:"rounded" %></td>
+            </tr>
+             <tr>
+              <td class="pt-2">メールアドレス</td>
+              <td class="pt-2 pl-4"><%= f.email_field :email,class:"rounded" %></td>
+            </tr>
+             <tr>
+              <td class="pt-2">会員ステータス</td>
+              <td class="pt-2 pl-4">
+                <%= f.radio_button :is_deleted, :false %>
+                <%= f.label :is_deleted_false,'有効',class:"pt-2"  %>
+                <%= f.radio_button :is_deleted, :true%>
+                <%= f.label :is_deleted_true,'退会',class:"pt-2" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="pt-4 pl-4"><%= f.submit '変更を保存',class:"btn btn-success text-white" %></td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 </div>

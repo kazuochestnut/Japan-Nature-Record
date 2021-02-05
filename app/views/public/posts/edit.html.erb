@@ -1,29 +1,38 @@
 
-
+<div class="egawa">
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-10">
             </br>
-            <span class="bg-light" style="font-size: 21px;">商品編集</span>
+            <h3>投稿編集</h3>
+            </br>
             <%= form_with model:@post, url:post_path, method: :patch, local:true do |f| %>
-              <h5>写真</h5>
+              <h6>写真</h6>
               <%= f.attachment_field :image %>
-              <h5>画像名</h5>
+              <h6>現地名</h6>
               <%= f.text_field :name %>
-              <h5>現地情報</h5>
+              <h6>現地情報</h6>
               <%= f.text_area :description%>
-              <h5>カテゴリー</h5>
+              <h6>住所</h6>
+              <%= f.text_field :address, placeholder: "住所" %>
+              <h6>カテゴリー</h6>
               <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
-              <h5>撮影地</h5>
+              <h6>撮影地</h6>
               <%= f.collection_select :location_id, Location.all, :id, :name, include_blank: "選択して下さい" %>
-              <h5>撮影日</h5>
+              <h6>撮影日</h6>
               <%= f.text_field :shooting_date%>
-              <h5>おすすめ訪問時期</h5>
+              <h6>おすすめ訪問時期</h6>
               <%= f.text_field :visit%>
+              </br>
               </br>
               <%= f.submit '変更を保存', class:'btn btn-success' %>
             <% end %>
         </div>
     </div>
+</div>
+</br>
+</br>
+</br>
+</br>
 </div>

@@ -1,51 +1,141 @@
+<div class="egawa">
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-10">
-    
-    <span class="bg-light" style="font-size: 21px;">投稿内容</span>
-    
+    <div class="col-md-3">
+      </br>
+      <%= render partial: 'public/users/list', locals: { user: @user, post: @post} %>
+    </div>
+
+    <div class="col-md-9">
+      </br>
+    <h3>投稿内容</h3>
     <table>
     <th>
     <%= attachment_image_tag @post, :image, format: 'jpeg', width: "500px" %>
     </th>
+
       <tr>
-      <th>画像名</th>
+      <th><div id="likes_buttons_<%= @post.id %>">
+       <%= render partial: 'public/likes/like', locals: { post: @post} %>
+      </div></th>
+      </tr>
+
+      <tr>
+      <th>投稿者</th>
+      <th>
+      <%= link_to users_my_page_path(@post.id) do %>
+      <%= @user.family_name %><%= @user.first_name %>
+      <% end %></th>
+      </tr>
+
+      <tr>
+      <th>現地名</th>
       <th><%= @post.name %></th>
       </tr>
-    
+
       <tr>
       <th>現地情報</th>
       <th><%= @post.description %></th>
       </tr>
-    
+
       <tr>
       <th>カテゴリー名</th>
       <th><%= @post.category.name %></th>
       </tr>
-    
+
       <tr>
       <th>撮影地</th>
       <th><%= @post.location.name %></th>
       </tr>
-    
+
+      <th>住所</th>
+      <th><%= @post.address %></th>
+      </tr>
+
       <th>撮影日</th>
       <th><%= @post.shooting_date %></th>
       </tr>
-      
+
       <th>おすすめ訪問時期</th>
       <th><%= @post.visit %></th>
       </tr>
-      <th><div id="likes_buttons_<%= @post.id %>">
-       <%= render partial: 'public/likes/like', locals: { post: @post} %>
-      </div></th>
+
+
+
+      <tr>
       <th><div class="comment-create">
        <%= render partial: 'public/post_comments/post', locals: { post: @post, post_comment: @post_comment } %>
       </div></th>
-      <tr>
-      <th><%= link_to "編集モード", edit_post_path(@post),class:'btn btn-success'  %></th>
+      <th><div id="comments_area">
+        <%= render partial: 'public/post_comments/index', locals: { post: @post, post_comment: @post_comment } %>
+      </div></th>
       </tr>
+
+        <%  if current_user.id == @post.user_id %>
+        <th><%= link_to "編集", edit_post_path(@post) , class:'btn btn-success' %></th>
+        <th><%= link_to "削除", post_path, method: :delete ,data:{ confirm:'Are you sure?'} , class:'btn btn-danger'%></th>
+    　　<%  end %>
+
      </table>
+     </br>
+      <div id="map"></div>
+      <style type="text/css">
+        #map { height: 300px;
+               width: 70%;}
+      </style>
+      <script type="text/javascript">
+        function initMap() {
+      // #latitude,longitudeから位置を特定
+          var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+          
+          var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15,
+                    center: test
+                    });
+          var transitLayer = new google.maps.TransitLayer();
+          transitLayer.setMap(map);
+
+          var contentString = '住所：<%= @post.address %>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          
+ 
+      // #Map上の指定した位置にピンを挿して表示する
+          var marker = new google.maps.Marker({
+                        position:test,
+                        map: map,
+                        title: contentString
+                       });
+
+           marker.addListener('click', function() {
+             infowindow.open(map, marker);
+           });
+        }
+      </script>
+      <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+      </script>
+
+    </br>
+    </br>
     </div>
   </div>
 </div>
+</div>
+
+
+        <!--// function initMap(){-->
+        <!--//   let map = new google.maps.Map(document.getElementById('map'), {-->
+        <!--//     center: map,              //マップの中心-->
+        <!--//     zoom: 15,                  //マップの解析度-->
+        <!--//     mapTypeControl: false,     //オプション-->
+        <!--//     streetViewControl: false   //オプション-->
+        <!--//   });-->
+          
+        <!--//   (function() {-->
+        <!--//   let marker = new google.maps.Marker({-->
+        <!--//     position: {lat: <%#= @post.latitude %>, lng: <%#= @post.longitude %>},-->
+        <!--//     map: map,-->
+        <!--//   });-->
+        <!--// })();-->
