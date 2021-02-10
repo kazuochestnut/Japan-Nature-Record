@@ -25,10 +25,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about', to: 'homes#about'
-    get 'users/my_page', to: 'users#show'
+    get 'users/my_page', to: 'users#my_page'
+   
     get 'users/check', to: 'users#check'
     patch 'users/withdraw', to: 'users#withdraw'
-    resource :users, only: [:update]
+    resource :users, only: [:show, :update]
     get 'users/my_page/edit' => 'users#edit', as: 'my_page_edit'
     get 'posts/location', to: 'posts#location'
     get 'posts/search', to: 'posts#search'
@@ -39,12 +40,13 @@ Rails.application.routes.draw do
     end
 
     resources :relationships, only: [:create, :destroy]
-  end
-
-  resources :users do
-    member do
-     get :following, :followers
+ 
+    resources :users do
+      member do
+       get :following, :followers
+      end
     end
-  end
+  
+ end
 
 end

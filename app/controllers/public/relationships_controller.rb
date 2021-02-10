@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-  
+
   before_action :authenticate_user!
   before_action :set_user
 
@@ -7,10 +7,10 @@ class Public::RelationshipsController < ApplicationController
     following = current_user.follow(@user)
     if following.save
       flash[:success] = 'ユーザーをフォローしました'
-      redirect_to post_path(params[:post_id])
+      redirect_to user_path(params[:follow_id])
     else
       flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-      redirect_to post_path(params[:post_id])
+      redirect_to user_path(params[:follow_id])
     end
   end
 
@@ -18,10 +18,10 @@ class Public::RelationshipsController < ApplicationController
     following = current_user.unfollow(@user)
     if following.destroy
       flash[:success] = 'ユーザーのフォローを解除しました'
-      redirect_to post_path(params[:post_id])
+      redirect_to user_path(params[:follow_id])
     else
       flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-      redirect_to post_path(params[:post_id])
+      redirect_to user_path(params[:follow_id])
     end
   end
 

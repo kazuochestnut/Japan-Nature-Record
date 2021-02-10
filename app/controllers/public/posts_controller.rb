@@ -10,10 +10,11 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @user = @post.user
-    # byebug
+    # @user = @post.user
+    @post = Post.find_by(id: params[:id])
+    @user = User.find_by(id: @post.user_id)
   end
 
   def new
@@ -24,10 +25,10 @@ class Public::PostsController < ApplicationController
     @post =Post.new(post_params)
     @post.user_id =current_user.id
     if @post.save
-       flash[:success] = "投稿しました"
+       flash[:success] = "旅の道標を残しました。"
        redirect_to post_path(@post.id)
     else
-       flash.now[:danger] = "投稿に失敗しました"
+       flash.now[:danger] = "旅の道標が残せません。もう一度確認してみましょう。"
        render :new
     end
   end
@@ -37,8 +38,13 @@ class Public::PostsController < ApplicationController
   end
 
   def search
+     @param = params[:q]
      @q = Post.ransack(params[:q])
-     @posts = @q.result(distinct: true)
+     if @param.present?
+       @posts = @q.result(distinct: true)
+     else
+       @posts = Array.new
+     end
   end
 
   def edit

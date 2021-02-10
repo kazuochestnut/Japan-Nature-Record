@@ -2,7 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+        :recoverable, :rememberable
+        # , :validatable
+         
+  attachment :profile_image
          
   validates :family_name, :first_name, :family_name_kana, :first_name_kana,:postal_code, :address, :phone_number, presence: true
   validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
@@ -19,6 +22,9 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
   has_many :post_comments, dependent: :destroy
 
+  def posts
+    return Post.where(user_id: self.id)
+  end
   
   def follow(other_user)
     unless self == other_user

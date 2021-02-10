@@ -3,7 +3,7 @@
   <head>
     <title>JNR</title>
     <%= csrf_meta_tags %>
-    
+
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -15,25 +15,25 @@
           <div class="container">
           <a class="navbar-brand" href="/">
           <span><img src="/assets/image/IMG_6495 (1).PNG"></span></a>
-          
+
            <div class="collapse navbar-collapse" id="navbarNavDropdown" >
             <ul class="navbar-nav ml-auto">
               <div class="topfont">
                 <% if admin_signed_in? %>
                   <%= link_to "ユーザー管理", admin_users_path, class: "btn btn-outline-secondary" %>
-  
+
                   <%= link_to "カテゴリー管理", admin_categories_path, class: "btn btn-outline-secondary" %>
-  
+
                   <%= link_to "撮影地管理", admin_locations_path, class: "btn btn-outline-secondary" %>
-  
+
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete , class: "btn btn-outline-secondary" %>
                 <% elsif user_signed_in? %>
                   <%= link_to "MyPage", users_my_page_path, class: "fas fa-torii-gate text-white" %>
-  
+
                   <%= link_to "旅の道標", posts_path, class: "fas fa-cannabis text-white" %>
-  
+
                   <%= link_to "撮影地一覧", posts_location_path, class: "fas fa-feather-alt text-white" %>
-  
+
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt text-white" %>
                 <% else %>
                   <%= link_to "TOP", root_path, class: "fas fa-mountain text-white" %>
