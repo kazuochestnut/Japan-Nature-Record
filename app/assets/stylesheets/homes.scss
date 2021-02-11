@@ -62,18 +62,18 @@ h1{
 
 /* --- 段差で背景画像のアニメーションを実行 ----------------- */
 .box .src1 {
-  background-image : url('image/shioya.JPG');   /* 背景の画像を指定 */
+  background-image : image-url('image/shioya.JPG');   /* 背景の画像を指定 */
 }
 .box .src2 {
-  background-image : url('image/egawa2.JPG');   /* 背景の画像を指定 */
+  background-image : image-url('image/egawa2.JPG');   /* 背景の画像を指定 */
   animation-delay  : 5s;
 }
 .box .src3 {
-  background-image : url('image/shioya2.JPG');   /* 背景の画像を指定 */
+  background-image : image-url('image/shioya2.JPG');   /* 背景の画像を指定 */
   animation-delay  : 10s;
 }
 .box .src4 {
-  background-image : url('image/tokyo1.JPG');   /* 背景の画像を指定 */
+  background-image : image-url('image/tokyo1.JPG');   /* 背景の画像を指定 */
   animation-delay  : 15s;
 }
 
