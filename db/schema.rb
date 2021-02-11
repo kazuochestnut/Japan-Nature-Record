@@ -30,11 +30,6 @@ ActiveRecord::Schema.define(version: 2021_02_07_194920) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "change_column_to_posts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
