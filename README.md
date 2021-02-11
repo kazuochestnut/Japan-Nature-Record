@@ -8,13 +8,13 @@
 
 ## 背景
  自分が日本の風景写真家として活動している中で活動している者同士で撮影地に関して<br />
- 実体験をベースに情報共有する場所というのはあまりないと感じ、旅人や写真家たちが生の情報を共有するアプリケーションとして開発した。
+ 実体験をベースに情報共有する場所というのはあまりないと感じ、旅人や写真家たちが生の情報を共有するアプリケーションとして開発しました。
 
  ![スクリーンショット 2021-02-10 12 20 21](https://user-images.githubusercontent.com/73156244/107459980-a0181300-6b9a-11eb-9271-9cc6470b8bc8.png)
 
-
  ![スクリーンショット 2021-02-10 12 19 42](https://user-images.githubusercontent.com/73156244/107459907-85459e80-6b9a-11eb-8d89-ead500f61418.png)
 
+ ![スクリーンショット 2021-02-10 12 46 23](https://user-images.githubusercontent.com/73156244/107461768-0bafaf80-6b9e-11eb-89e9-022c7244490b.png)
 
 ## 使用方法について
  1. git clone https://github.com/kazuochestnut/Japan-Nature-Record.git
