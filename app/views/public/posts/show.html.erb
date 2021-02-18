@@ -17,6 +17,15 @@
     </th>
 
       <tr>
+      <th>
+      <div class="tag-box">
+      <% @post.tags.each do |tag| %>
+        <span class="label"><%= tag.name %></span>
+      <% end %></div>
+      </th>
+      </tr>
+
+      <tr>
       <th><div id="likes_buttons_<%= @post.id %>">
        <%= render partial: 'public/likes/like', locals: { post: @post} %>
       </div></th>

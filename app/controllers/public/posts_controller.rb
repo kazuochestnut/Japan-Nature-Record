@@ -25,6 +25,10 @@ class Public::PostsController < ApplicationController
     @post =Post.new(post_params)
     @post.user_id =current_user.id
     if @post.save
+       tags = Vision.get_image_data(@post.image)
+       tags.each do |tag|
+         @post.tags.create(name: tag)
+       end
        flash[:success] = "旅の道標を残しました。"
        redirect_to post_path(@post.id)
     else

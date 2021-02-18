@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   belongs_to :location
   belongs_to :category
   has_many :likes, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
   validates :name, :category_id, :location_id, :visit, :description, presence: true
