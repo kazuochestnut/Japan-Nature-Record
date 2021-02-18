@@ -25,4 +25,6 @@
 ## 使用言語
  Ruby, HTML, SCSS, JavaScript
 
-
+## 実装機能一覧
+　https://docs.google.com/spreadsheets/d/1sW-Y2LFYcr2rAEngTvuobKXuah0LKJJLDuhCip6sbh4/edit#gid=0
+ 
